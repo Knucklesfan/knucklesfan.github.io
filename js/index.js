@@ -46,7 +46,6 @@ function physics() {
     objects.forEach(function (ball) {
         ball.physics(canvas.width, canvas.height);
     });
-    console.log(objects.length)
 
 }
 setInterval(draw, 0);
