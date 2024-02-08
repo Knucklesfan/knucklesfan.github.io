@@ -1,57 +1,41 @@
 <!DOCTYPE html>
 <head>
     <title>Knux's stuff</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <H1>Knux's Stuff</H1>
-    <h2>Pretend the old, cool HTML5 canvas site didn't get destroyed by a chrome update</h2><br>
-    <h3>Stuff I do:</h3>
-    <ul>
-        <li>C++/C programming</li>
-        <li>Hardware Tinkering</li>
-        <li>Random Misc coding assignments</li>
-        <li>Rom Hacking and other Game Design prospects</li>
-        <li>VR related stuff</li>
-        <li>Fun website experiments</li>
-    </ul>
-    <h3>Programming Languages I know (in literally no order):</h3>
-    <ul>
-        <li>C++/C</li>
-        <li>C#</li>
-        <li>Java</li>
-        <li>Javascript</li>
-        <li>HTML/CSS</li>
-        <li>Python</li>
-        <li>GML</li>
-        <li>Unix Shell</li>
-        <li>6502 ASM (mostly for SNES purposes)</li>
-    </ul>
-    <h3>Projects I'm really proud of (in literally no order):</h3>
-    <ul>
-        <li><a href="https://github.com/knucklesfan/uilapi">UIL-API</a>: Complete reimplementation of the UIL scores website into an API</li>
-        <li><a href="https://github.com/knucklesfan/sdltris">Knuxfan's Tetriminos</a>: My own hand-made version of Tetris, entirely coded in C++ using the SDL2 library. My first "big" game that wasn't built in a pre-existing engine.</li>
-        <li><a href="https://www.knuxstuff.com/KnuxfanSpelling/">Knuxfan Spelling</a>: Fun little browser-based spelling bee game. Made for a friend in less than 24 hours!</li>
-        <li><a href="https://github.com/Knucklesfan/KnuxfanRadio">Knuxfan Radio</a>: A visualizer for PulseAudio based systems that was intended to be expanded into a car radio. Unfortunately, the great global chip shortage kinda killed those dreams.</li>
-        <li><a href="https://github.com/Knucklesfan/Chip8Deluxe">Chip8Deluxe</a>: A mostly completed emulator of the somewhat real computer, Chip8! This was my first experiment with Chip8 emulation, with my next goal being Gameboy Emulation some day in the future.</li>
-        <li><a href="https://www.knuxstuff.com/Sus-Cube/">3D Sus Cube</a>: Joke that might've gone too far. But WebGL was fun to play with!</li>
-        <li><a href="http://www.knuxstuff.com/falcondance/">FalconDance</a>: Basically 3D Sus Cube but funnier. But threejs was fun to play with!</li>
-        <li><a href="https://github.com/Knucklesfan/Knuxfan3D/">Breaking Castle Wolfenstein (Alternate Title: DOOM but it's in Los Pollos Hermanos from Breaking Bad)</a>: Walter White themed Wolf3D clone that got too serious. Still working on this project!</li>
-        <li><a href="https://github.com/Knucklesfan/CPP-Tree-Fractal-Experiment">Tree Fractal Experiment</a>: My first C++ project! I never ported this one to Makefile, so it won't compile under Linux but I was ultimately really proud of this project</li>
-
-
-    </ul>
-    <h3>Projects I've helped run/taught:</h3>
-    <ul>
-        <li><a href="https://www.knuxstuff.com/games/">SHS Game Development Course</a>: Taught a game dev course to Sophomore students in my local area. We made 3 games.</li>
-        <li><a href="https://www.knuxstuff.com/games/">EMS Game Development Course</a>: Expanded and improved the SHS course, and taught Middle School students how to make games. We made 18 games in total.</li>
-    </ul>
-    <h3>Social Media and Rom Hacks:</h3>
-    <ul>
-        <li><a href="https://github.com/knucklesfan">Github</a></li>
-        <li><a href="https://www.smwcentral.net/?p=profile&id=30861">SMWCentral</a></li>
-        <li><a href="https://twitter.com/Knucklesfan2">Twitter</a></li>
-
-    </ul>
-    <img src="images/bread.jpg">bread</img>
-</body>
+    <section class="hero">
+        <canvas id="hero-canvas" class='hero-canvas'></canvas>
+        <script>
+        var canvas = document.getElementById('hero-canvas');
+        console.log("hello");
+        context = canvas.getContext('2d');
+        ctx.rect(0, 0, context., 100);
+        ctx.fillStyle = "red";
+        ctx.fill(); 
+        </script>
+        <header id="header">
+          <a id="logo" href="#">logo</a>
+          <nav>
+            <a id="menu-icon">&#8801;</a>
+          </nav>
+        </header>
+        <header class="hero-header">
+          <h1 class="hero-title">CADE PARKER</h1>
+        </header>
+        <footer class="hero-footer">
+          <a class="button button-primary" href="#">button one</a>
+          <a class="button" href="#">button two</a>
+        </footer>
+      </section>
+      <article>
+        <h2>Some additional content</h2>
+        <p>The rest of the page content continues below the hero. You can use the hero at the top of your page, e.g. the home page. A hero is great to display a high quality picture together with tasty title.</p>
+        <p>Ad donec tincidunt torquent ultricies convallis sodales faucibus magna, fringilla lorem blandit sollicitudin donec faucibus curae orci molestie, et proin curae aliquet venenatis ligula amet vivamus orci varius arcu.</p>
+        <p>Laoreet fusce condimentum venenatis quisque imperdiet ornare cras faucibus convallis, pharetra habitasse elementum ut bibendum per sociosqu phasellus etiam, velit faucibus integer torquent leo elementum maecenas netus.</p>
+      </article>
+    </body>
 </html>
