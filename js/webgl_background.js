@@ -7,37 +7,31 @@ function rad(number) {
     return number * (Math.PI/180);
 }
 
-function drawScene(gl, programInfo, buffers, deltaTime) {
-    if(squarepos <= -6.0 && animation) {
-        squarepos += 0.185;
-    }
+function drawScene(gl, canvas) {
 
-    gl.clearColor(0,0,0,visibility);
-    gl.clearDepth(1.0);
-    gl.enable(gl.DEPTH_TEST);
-    gl.depthFunc(gl.LEQUAL);
-
-    gl.clearColor(0.5, 0.5, 0.5, 0.9);
-
-    gl.clear(gl.COLOR_BUFFER_BIT);
-
-    //Draw the triangle
-    gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT,0);
 }
+const positions = [
+    -1,1,0.0,
+    -1,-1,0.0,
+    1,-1,0.0,
+    1,1,0.0
+];
+const faceColors = [
+    0,0,1, 1,0,0, 0,1,0, 1,0,1
+];
+let mousex = 0;
+let mousey = 0;
 
+const indices = [3,2,1,3,1,0];
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
 function initBuffers(gl) {
 
-    const positions = [
-        -0.5,0.5,0.0,
-        -0.5,-0.5,0.0,
-        0.5,-0.5,0.0,
-        0.5,0.5,0.0
-    ];
-    const faceColors = [
-        0,0,1, 1,0,0, 0,1,0, 1,0,1
-    ];
-
-    const indices = [3,2,1,3,1,0];
 
 
     const positionBuffer = gl.createBuffer();
@@ -100,7 +94,9 @@ function isPowerOf2(width) {
 function main() {
 
 
-    const canvas = document.getElementById("canvas")
+    const canvas = document.getElementById("hero-canvas")
+    const mouselayer = document.getElementById("inputDetect")
+
     const gl = canvas.getContext("webgl");
 
     if(gl == null) {
@@ -109,33 +105,33 @@ function main() {
     }
 
     const vsSource = `
-    attribute vec4 aVertexPosition;
-    attribute vec3 color
+    attribute vec4 coordinates;
+    attribute vec3 aColor;
 
     uniform mat4 uModelViewMatrix;
     uniform mat4 uProjectionMatrix;
 
-    varying vec3 vColor;
+    varying highp vec3 vColor;
 
     void main() {
-        gl_Position = vec4(coordinates, 1.0);
-        vColor = color;
+      gl_Position = coordinates;
+      vColor = aColor;
     }
   `;
 
     const fsSource = `
-    varying vec3 vColor;
-    precision mediump float;
+    varying highp vec3 vColor;
+    
+    uniform sampler2D uSampler;
 
     void main() {
-        gl_FragColor = vec4(vColor, 1.0);
+      gl_FragColor = vec4(vColor.r,vColor.g,vColor.b,1);
     }
   `;
-
     gl.clearColor(0,0,0,1);
     gl.clear(gl.COLOR_BUFFER_BIT);
     const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
-
+    gl.useProgram(shaderProgram);
     // Collect all the info needed to use the shader program.
     // Look up which attribute our shader program is using
     // for aVertexPosition and look up uniform locations.
@@ -143,28 +139,53 @@ function main() {
         program: shaderProgram,
         attribLocations: {
             vertexPosition: gl.getAttribLocation(shaderProgram, 'aVertexPosition'),
-            textureCoord: gl.getAttribLocation(shaderProgram, "aTextureCoord"),
+            colors: gl.getAttribLocation(shaderProgram, "color"),
         },
         uniformLocations: {
-            projectionMatrix: gl.getUniformLocation(shaderProgram, 'uProjectionMatrix'),
-            modelViewMatrix: gl.getUniformLocation(shaderProgram, 'uModelViewMatrix'),
-            uSampler: gl.getUniformLocation(shaderProgram, 'uSampler'),
         },
     };
 
     const buffers = initBuffers(gl);
-    const texture = loadTexture(gl, 'cubetexture.jpg');
+    // Bind vertex buffer object
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
+
+    // Bind index buffer object
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffers.indices);
+
+    var coord = gl.getAttribLocation(shaderProgram, "coordinates");
+
+    // point an attribute to the currently bound VBO
+    gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);
+
+    gl.enableVertexAttribArray(coord);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffers.colors);
+    
+    var color = gl.getAttribLocation(shaderProgram, "aColor");
+
+    gl.vertexAttribPointer(color, 3, gl.FLOAT, false,0,0) ;
+    gl.enableVertexAttribArray(color);
 
     var then = 0;
 
-    // Draw the scene repeatedly
+    mouselayer.addEventListener("mousemove", function (evt) {
+        var mousePos = getMousePos(mouselayer, evt);
+        console.log(mousePos.x/canvas.getBoundingClientRect().width + " " + mousePos.y/canvas.getBoundingClientRect().height)
+        
+    }, false);
+        // Draw the scene repeatedly
     function render(now) {
 
         now *= 0.001;  // convert to seconds
         const deltaTime = now - then;
         then = now;
-        drawScene(gl, programInfo, buffers, deltaTime);
 
+        gl.clearColor(0.5, 0.5, 0.2, 0.9);
+
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.viewport(0,0,canvas.width,canvas.height);
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT,0);
+    
         requestAnimationFrame(render);
     }
     requestAnimationFrame(render);
