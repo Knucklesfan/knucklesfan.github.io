@@ -108,8 +108,7 @@ function main() {
     attribute vec4 coordinates;
     attribute vec3 aColor;
 
-    uniform mat4 uModelViewMatrix;
-    uniform mat4 uProjectionMatrix;
+    uniform vec2 mouse;
 
     varying highp vec3 vColor;
 
@@ -121,7 +120,8 @@ function main() {
 
     const fsSource = `
     varying highp vec3 vColor;
-    
+    uniform highp vec2 mouse;
+
     uniform sampler2D uSampler;
 
     void main() {
@@ -142,6 +142,7 @@ function main() {
             colors: gl.getAttribLocation(shaderProgram, "color"),
         },
         uniformLocations: {
+            mouse: gl.getUniformLocation(shaderProgram, 'mouse'),        
         },
     };
 
@@ -170,7 +171,9 @@ function main() {
 
     mouselayer.addEventListener("mousemove", function (evt) {
         var mousePos = getMousePos(mouselayer, evt);
-        console.log(mousePos.x/canvas.getBoundingClientRect().width + " " + mousePos.y/canvas.getBoundingClientRect().height)
+        mousex = mousePos.x/canvas.getBoundingClientRect().width;
+        mousey = mousePos.y/canvas.getBoundingClientRect().height;
+        console.log(mousex+" " + mousey);
         
     }, false);
         // Draw the scene repeatedly
@@ -184,7 +187,11 @@ function main() {
 
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.viewport(0,0,canvas.width,canvas.height);
+        gl.useProgram(shaderProgram);
+        gl.uniform2f(programInfo.uniformLocations.mouse,
+            mousex,mousey);
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT,0);
+
     
         requestAnimationFrame(render);
     }
