@@ -10,19 +10,35 @@ function rad(number) {
 function drawScene(gl, canvas) {
 
 }
-const positions = [
-    -1,1,0.0,
-    -1,-1,0.0,
-    1,-1,0.0,
-    1,1,0.0
+function lerp(a, b, t)    {
+    if (t <= 0.5)
+        return a+(b-a)*t;
+    else
+        return b-(b-a)*(1.0-t);
+}
+let positions = [
+    -1,-1,0,
+    -1,1,0,
+    1,-1,0,
+    1,1,0,
+    0,0,0,
 ];
 const faceColors = [
-    0,0,1, 1,0,0, 0,1,0, 1,0,1
+    0,0,1, 
+    1,0,0, 
+    0,1,0, 
+    1,0,1,
+    0,1,1,
 ];
 let mousex = 0;
 let mousey = 0;
 
-const indices = [3,2,1,3,1,0];
+const indices = [
+    0,1,4,
+    0,2,4,
+    1,3,4,
+    2,3,4,
+];
 function getMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
     return {
@@ -90,7 +106,7 @@ function initShaderProgram(gl, vsSource, fsSource) {
 function isPowerOf2(width) {
     return(width & (width-1)) == 0;
 }
-
+const starttime = Date.now();
 function main() {
 
 
@@ -121,11 +137,10 @@ function main() {
     const fsSource = `
     varying highp vec3 vColor;
     uniform highp vec2 mouse;
-
-    uniform sampler2D uSampler;
-
+    uniform highp float time;
+    
     void main() {
-      gl_FragColor = vec4(vColor.r,vColor.g,vColor.b,1);
+      gl_FragColor = vec4(vColor.x+sin(time/1000.0),vColor.y-cos(time/2000.0),vColor.z,1.0);
     }
   `;
     gl.clearColor(0,0,0,1);
@@ -142,7 +157,8 @@ function main() {
             colors: gl.getAttribLocation(shaderProgram, "color"),
         },
         uniformLocations: {
-            mouse: gl.getUniformLocation(shaderProgram, 'mouse'),        
+            mouse: gl.getUniformLocation(shaderProgram, 'mouse'),   
+            time: gl.getUniformLocation(shaderProgram, 'time'),   
         },
     };
 
@@ -176,20 +192,25 @@ function main() {
         console.log(mousex+" " + mousey);
         
     }, false);
+    var lastUpdate = Date.now();
         // Draw the scene repeatedly
     function render(now) {
-
-        now *= 0.001;  // convert to seconds
-        const deltaTime = now - then;
-        then = now;
+        
 
         gl.clearColor(0.5, 0.5, 0.2, 0.9);
-
+        positions[12] = lerp(positions[12],(mousex*2)-1,0.05);
+        positions[13] = lerp(positions[13],1-(mousey*2),0.05);
+        gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions),gl.STATIC_DRAW);
+    
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.viewport(0,0,canvas.width,canvas.height);
         gl.useProgram(shaderProgram);
         gl.uniform2f(programInfo.uniformLocations.mouse,
             mousex,mousey);
+        gl.uniform1f(programInfo.uniformLocations.time,
+            Date.now()-starttime);
+    
         gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT,0);
 
     
