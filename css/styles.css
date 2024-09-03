@@ -13,7 +13,6 @@
 body {
 	background-color: #1B1B1B;
 	font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	font-size: 3vh;
 }
 
 
@@ -21,6 +20,8 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	font-size: 3vh;
+
 }
 
 #logo {
@@ -48,6 +49,7 @@ body {
 	color: white;
 	position:relative
 }
+
 .hero-canvas {
     border-radius: 45px;
 	display: flex;
@@ -63,6 +65,7 @@ body {
 	top: 0;
 	left: 0;
 	z-index: -1;
+
     pointer-events: all;
 }
 .invisible {
@@ -72,7 +75,7 @@ body {
 	justify-content: space-between;
 	width: 100%;
 	height: 75vh;
-	padding: 1em;
+	padding: 0.5em;
 	box-sizing: border-box;
 	color: white;
 	display: block;
@@ -81,15 +84,65 @@ body {
 	left: 0;
 	z-index: 2;
     pointer-events: all;
-    transition: border 5s ease-in-out;
-}
-article: {
-	
+	border: 0px solid rgb(82, 82, 224);
+    transition: border 0.1s ease-in-out;
 }
 .invisible:hover {
-	border: 1rem solid blue;
-	animation: fadeIn 1s;
+	border: 1rem solid rgb(82, 82, 224);
 }
+.coverinvisible {
+    border-radius: 45px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 75vh;
+	padding: 0.5em;
+	box-sizing: border-box;
+	color: white;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+    pointer-events: all;
+}
+
+article {
+	background-color:#2e2e2e;
+	color: whitesmoke;
+	border-radius: 45px;
+	flex: 50%;
+	border: 0.1em solid #3b3b3b;
+	max-width: 36em;
+	margin: 0 auto;
+	padding: 1em;
+	scale: 1;
+	box-shadow: 0px 0px #202020;
+	transition: all 0.2s ease-in-out;
+
+}
+article:hover {
+	scale: 1.1;
+	box-shadow: 16px 16px #202020;
+	transition: all 0.2s;  
+}
+.flexrow {
+	display: flex;
+	padding: 1rem;
+	gap: 1rem;
+
+}
+.flexcolumn {
+	font-size: 2vh;
+
+	flex: 50%;
+	padding: 10px;  
+}
+@media screen and not (min-width: 600px)  { /*doin this to make sure its readable on phone*/
+	.flexrow { display: block; }
+}
+
 .hero-title {  /* The text on the hero */
 	max-width: 16em;
 	margin: 0;
@@ -123,8 +176,45 @@ article: {
 		background-color: white;
 	}
 	
-article {
-	max-width: 36em;
-	margin: 0 auto;
-	padding: 1em;
-}	
+article h1,h2,h3,h4,h5,h6 {
+	font-family: 'Playfair Display', serif;
+}
+.header { 
+	color: whitesmoke;
+	text-align:center;
+	font-family: 'Playfair Display', serif;
+
+}
+
+.topnav {
+	background-color: #333;
+	overflow: hidden;
+	border-radius: 5px;
+
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 1em 1em;
+	text-decoration: none;
+	font-size: 17px;
+	transition: 0.1s;
+	border-radius: 5px;
+
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+	background-color: #ddd;
+	color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+	background-color: rgb(82, 82, 224);
+	color: white;
+  }
+

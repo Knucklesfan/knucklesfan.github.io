@@ -5,10 +5,52 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Playfair+Display&display=swap" rel="stylesheet"> 
+    <script src="js/utils.js"></script>
     <script src="js/webgl_background.js"></script>
+    <script src="js/coverflow.js"></script>
+
+    <script src="js/sprite.js"></script>
+    <script src="js/dynamic.js"></script>
+    <script src="js/plane.js"></script>
+    <script src="js/cube.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+            integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+            crossorigin="anonymous" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <!--among us-->
+    <!--
+                 .,..,,*,,..,,,,,,,**                   
+             .*,,...................,*/                 
+           ,,...../..,.,,,***/******,,*,*//             
+         ,,.  ..,,,,,//((##%%%%%%####(/,,..,*           
+       .,*.  ,,****,/((#####%%%&%%#####(/*....          
+       *.. .**//***/((((###%%%%&%%####(#(/,....         
+      ,,...*****/*/(((#######%%%%%%#####(/*....         
+      ., .,****/((((((((((######%%%#####((*....         
+       ...***,,,,*///(((((((((((/****//(##/,..,         
+       ...,,**,....,,,**/((//**...,,..,*/##,...         
+        ,.***.,**   ,.,,(#%#*.,**,.,(/(*/#%*.//         
+       /../*,,,*/,,,,,,*(###((/*,,,,/(##//(/,*(         
+       .,,***/(((((//***/##(((((////(((###///(%         
+       , ,**//(((/****,/((#(((((/***/(((((((#%%         
+        .******.,*,****/(((((//(((//**,*(#*(#(.         
+          ****,,,**,,,,,****//(((/**,,..,/**            
+          **/,/*,.,,,,,*,*/*****#//../*./(/             
+           ****/*,,#%#&(%%#&&&@@&&.*(/,(*/              
+            ,**//**,.*%#%%%&&##*#**((((//               
+              .*//**,*,(((*(#(%%(/((#(*                 
+          .,***,,/***//***/*///((((#((/(#/##            
+    .,****.*/* *,,,****///////((((#(*/(((*/##(##%%          -->
+    <div class="topnav">
+      <a class="active" href="#home">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+    </div>
+    <br>
     <section class="hero">
         <header id="header">
         </header>
@@ -22,11 +64,29 @@
         <canvas id="inputDetect" class="invisible">
         </canvas>
       </section>
-      <article>
-        <h2>Some additional content</h2>
-        <p>The rest of the page content continues below the hero. You can use the hero at the top of your page, e.g. the home page. A hero is great to display a high quality picture together with tasty title.</p>
-        <p>Ad donec tincidunt torquent ultricies convallis sodales faucibus magna, fringilla lorem blandit sollicitudin donec faucibus curae orci molestie, et proin curae aliquet venenatis ligula amet vivamus orci varius arcu.</p>
-        <p>Laoreet fusce condimentum venenatis quisque imperdiet ornare cras faucibus convallis, pharetra habitasse elementum ut bibendum per sociosqu phasellus etiam, velit faucibus integer torquent leo elementum maecenas netus.</p>
-      </article>
+      <h1 class="header">I do stuff.</h1>
+      <br>
+      <div class="flexrow">
+        <article class="flexcolumn">
+          <h1>C++/C Low level programmer</h2>
+          <p>The rest of the page content continues below the hero. You can use the hero at the top of your page, e.g. the home page. A hero is great to display a high quality picture together with tasty title.</p>
+          <p>Ad donec tincidunt torquent ultricies convallis sodales faucibus magna, fringilla lorem blandit sollicitudin donec faucibus curae orci molestie, et proin curae aliquet venenatis ligula amet vivamus orci varius arcu.</p>
+          <p>Laoreet fusce condimentum venenatis quisque imperdiet ornare cras faucibus convallis, pharetra habitasse elementum ut bibendum per sociosqu phasellus etiam, velit faucibus integer torquent leo elementum maecenas netus.</p>
+        </article>
+        <br>
+        <article class="flexcolumn">
+          <h1>Some additional content</h2>
+          <p>The rest of the page content continues below the hero. You can use the hero at the top of your page, e.g. the home page. A hero is great to display a high quality picture together with tasty title.</p>
+          <p>Ad donec tincidunt torquent ultricies convallis sodales faucibus magna, fringilla lorem blandit sollicitudin donec faucibus curae orci molestie, et proin curae aliquet venenatis ligula amet vivamus orci varius arcu.</p>
+          <p>Laoreet fusce condimentum venenatis quisque imperdiet ornare cras faucibus convallis, pharetra habitasse elementum ut bibendum per sociosqu phasellus etiam, velit faucibus integer torquent leo elementum maecenas netus.</p>
+        </article>    
+      </div>
+      <h1 class="header">Just a few of the projects I've worked on...</h1>
+      <section class="hero">
+        <canvas id="coverflow-canvas" class='hero-canvas'>
+        </canvas>
+        <canvas id="coverflow-inputDetect" class="coverinvisible">
+        </canvas>
+      </section>
     </body>
 </html>
