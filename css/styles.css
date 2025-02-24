@@ -242,7 +242,7 @@ article h1,h2,h3,h4,h5,h6 {
 	top: 0;
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
-	overflow: all; /* Enable scroll if needed */
+	overflow: auto; /* Enable scroll if needed */
 	background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
@@ -263,6 +263,7 @@ article h1,h2,h3,h4,h5,h6 {
 	box-shadow: 0px 0px #202020;
 	animation-name: animatetop;
 	animation-duration: 1s
+	overflow-y: auto;
 }
 /* Add Animation */
 @keyframes animatetop {
@@ -376,4 +377,31 @@ article h1,h2,h3,h4,h5,h6 {
 @media screen and (min-width: 600px) {#modaldesc {
 	max-width:25vw
 }
+.modal-content {
+	max-width:75vw
+}
+}
+.linkbox {
+	background-color:DeepSkyBlue;
+	color: whitesmoke;
+	border-radius: 45px;
+	flex: 50%;
+	border: 0.1em solid CornflowerBlue;
+	max-width: 36em;
+	margin: 0 auto;
+	padding: 1em;
+	scale: 1;
+	box-shadow: 0px 0px #202020;
+	transition: all 0.2s ease-in-out;
+	text-decoration: none;
+	text-align: center;
+}
+a:hover, a:visited, a:link, a:active
+{
+	text-decoration: none;
+}
+.linkbox:hover {
+	scale: 1.1;
+	box-shadow: 16px 16px #202020;
+	transition: all 0.2s;
 }
