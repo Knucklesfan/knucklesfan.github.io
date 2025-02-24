@@ -13,14 +13,18 @@
 body {
 	background-color: #1B1B1B;
 	font-family: 'PT Sans Caption',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	font-size: 3vh;
 }
-
+.small {
+	font-size: 0.5em;
+	color:rgb(128, 128, 128);
+}
 
 #header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	font-size: 3vh;
+
 }
 
 #logo {
@@ -48,6 +52,7 @@ body {
 	color: white;
 	position:relative
 }
+
 .hero-canvas {
     border-radius: 45px;
 	display: flex;
@@ -63,7 +68,8 @@ body {
 	top: 0;
 	left: 0;
 	z-index: -1;
-    pointer-events: all;
+
+    pointer-events: auto;
 }
 .invisible {
     border-radius: 45px;
@@ -72,7 +78,29 @@ body {
 	justify-content: space-between;
 	width: 100%;
 	height: 75vh;
-	padding: 1em;
+	padding: 0.5em;
+	box-sizing: border-box;
+	color: white;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+    pointer-events: auto;
+	border: 0px solid rgb(82, 82, 224);
+    transition: border 0.1s ease-in-out;
+}
+.invisible:hover {
+	border: 1rem solid rgb(82, 82, 224);
+}
+.coverinvisible {
+    border-radius: 45px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 75vh;
+	padding: 0.5em;
 	box-sizing: border-box;
 	color: white;
 	display: block;
@@ -81,15 +109,53 @@ body {
 	left: 0;
 	z-index: 2;
     pointer-events: all;
-    transition: border 5s ease-in-out;
 }
-article: {
-	
+
+article {
+	background-color:#2e2e2e;
+	color: whitesmoke;
+	border-radius: 45px;
+	flex: 50%;
+	border: 0.1em solid #3b3b3b;
+	max-width: 36em;
+	margin: 0 auto;
+	padding: 1em;
+	scale: 1;
+	box-shadow: 0px 0px #202020;
+	transition: all 0.2s ease-in-out;
+
 }
-.invisible:hover {
-	border: 1rem solid blue;
-	animation: fadeIn 1s;
+article:hover {
+	scale: 1.1;
+	box-shadow: 16px 16px #202020;
+	transition: all 0.2s;  
 }
+.column {
+	float: left;
+	width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.flexrow {
+	display: flex;
+	padding: 1rem;
+	gap: 1rem;
+
+}
+.flexcolumn {
+	font-size: 2vh;
+	flex: fit-content;
+	padding: 10px;  
+}
+@media screen and not (min-width: 600px)  { /*doin this to make sure its readable on phone*/
+	.flexrow { display: block; }
+}
+
 .hero-title {  /* The text on the hero */
 	max-width: 16em;
 	margin: 0;
@@ -123,8 +189,219 @@ article: {
 		background-color: white;
 	}
 	
-article {
+article h1,h2,h3,h4,h5,h6 {
+	font-family: 'Playfair Display', serif;
+}
+.header { 
+	color: whitesmoke;
+	text-align:center;
+	font-family: 'Playfair Display', serif;
+
+}
+
+.topnav {
+	background-color: #333;
+	overflow: hidden;
+	border-radius: 5px;
+
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 1em 1em;
+	text-decoration: none;
+	font-size: 17px;
+	transition: 0.1s;
+	border-radius: 5px;
+
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+	background-color: #ddd;
+	color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+	background-color: rgb(82, 82, 224);
+	color: white;
+  }
+
+/* based on the w3schools example on modals*/
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 3; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	position: relative;
+	background-color: #fefefe;
+	margin: 1em auto; /* 15% from the top and centered */
+	padding: 20px;
+	width: fit-content; /* Could be more or less, depending on screen size */
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	background-color:#2e2e2e;
+	color: whitesmoke;
+	border-radius: 45px;
+	flex: 50%;
+	border: 0.1em solid #3b3b3b;
+	box-shadow: 0px 0px #202020;
+	animation-name: animatetop;
+	animation-duration: 1s
+	overflow-y: auto;
+}
+/* Add Animation */
+@keyframes animatetop {
+	from {transform: rotate3d(0,1,0,180deg); opacity: 0}
+	to {transform: rotate3d(0,1,0,0deg); opacity: 1}
+}
+/* The Close Button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+/* aaaand this slideshow is based on the w3 schools one too... sorry everyone*/
+/* I seriously doubt this is gonna live long enough to even survive being copied, but here goes*/
+
+.slideshow-container {
+	position: relative;
+	width: fit-content;
+/*	min-width: 25em;
+	min-height: 50vh;*/
+}
+
+/* Hide the images by default */
+.mySlides {
+	display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+	right: 0;
+	border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+	background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+	color: #f2f2f2;
+	font-size: 15px;
+	padding: 8px 12px;
+	position: absolute;
+	bottom: 8px;
+	width: 100%;
+	text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+	color: #f2f2f2;
+	font-size: 12px;
+	padding: 8px 12px;
+	position: absolute;
+	top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+@media screen and (min-width: 600px) {#modaldesc {
+	max-width:25vw
+}
+.modal-content {
+	max-width:75vw
+}
+}
+.linkbox {
+	background-color:DeepSkyBlue;
+	color: whitesmoke;
+	border-radius: 45px;
+	flex: 50%;
+	border: 0.1em solid CornflowerBlue;
 	max-width: 36em;
 	margin: 0 auto;
 	padding: 1em;
-}	
+	scale: 1;
+	box-shadow: 0px 0px #202020;
+	transition: all 0.2s ease-in-out;
+	text-decoration: none;
+	text-align: center;
+}
+a:hover, a:visited, a:link, a:active
+{
+	text-decoration: none;
+}
+.linkbox:hover {
+	scale: 1.1;
+	box-shadow: 16px 16px #202020;
+	transition: all 0.2s;
+}
