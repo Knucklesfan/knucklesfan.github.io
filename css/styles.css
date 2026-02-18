@@ -152,6 +152,15 @@ article:hover {
 	flex: fit-content;
 	padding: 10px;  
 }
+.flexcolumn-center {
+	font-size: 2vh;
+	flex: fit-content;
+	display:flex;
+	padding: 10px;  
+	justify-content: center;
+
+}
+
 @media screen and not (min-width: 600px)  { /*doin this to make sure its readable on phone*/
 	.flexrow { display: block; }
 }
@@ -169,7 +178,20 @@ article:hover {
 }
 	
 	@media only screen and (min-width: 32em) { .hero-title { font-size: 16vh; } }	
+.button-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.center-button {
+	background-color: rgb(82, 82, 224);
+	padding: 8px;
+	color: white;
+	border-radius: 8px;
+	font-size: 2vh;
+	padding: 10px;  
 
+}
 .hero-footer {
 	display: flex;
 	margin-bottom: 1em;
@@ -191,6 +213,9 @@ article:hover {
 	
 article h1,h2,h3,h4,h5,h6 {
 	font-family: 'Playfair Display', serif;
+}
+h2 {
+	margin: 0;
 }
 .header { 
 	color: whitesmoke;
@@ -262,7 +287,7 @@ article h1,h2,h3,h4,h5,h6 {
 	border: 0.1em solid #3b3b3b;
 	box-shadow: 0px 0px #202020;
 	animation-name: animatetop;
-	animation-duration: 1s
+	animation-duration: 1s;
 	overflow-y: auto;
 }
 /* Add Animation */
@@ -404,4 +429,40 @@ a:hover, a:visited, a:link, a:active
 	scale: 1.1;
 	box-shadow: 16px 16px #202020;
 	transition: all 0.2s;
+}
+.center-paragraph {
+	color: white;
+	font-size: 2vh;
+	flex: fit-content;
+	padding: 0px 10vw;  
+	justify-content: center;
+	display:flex;
+}
+.paragraph {
+	padding: 0px 10vw;  
+
+	color: white;
+	font-size: 2vh;
+	text-align: center;
+
+}
+.footer {
+	padding-top: 25vh;
+	color: white;
+
+}
+.pin-bottom {
+	position: absolute;
+	bottom: 32px;
+	left: 32px;
+}
+.center-column {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+.profile {
+	border-radius: 50%;
+	width: 128px;
+	height: 128px;
 }

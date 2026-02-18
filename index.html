@@ -8,7 +8,13 @@
     <script src="js/utils.js"></script>
     <script src="js/webgl_background.js"></script>
     <script src="js/coverflow.js"></script>
-
+    <script
+      src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"
+    ></script>
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+    />
     <script src="js/sprite.js"></script>
     <script src="js/dynamic.js"></script>
     <script src="js/plane.js"></script>
@@ -22,35 +28,13 @@
 <body>
     <!--this is like the super commercialized version of my website-->
     <!--if you wanna see what im actually like you should check out my other site-->
+    <!--check out lauraisthe.one-->
     <!--among us-->
-    <!--
-                 .,..,,*,,..,,,,,,,**
-             .*,,...................,*/
-           ,,...../..,.,,,***/******,,*,*//
-         ,,.  ..,,,,,//((##%%%%%%####(/,,..,*
-       .,*.  ,,****,/((#####%%%&%%#####(/*....
-       *.. .**//***/((((###%%%%&%%####(#(/,....
-      ,,...*****/*/(((#######%%%%%%#####(/*....
-      ., .,****/((((((((((######%%%#####((*....
-       ...***,,,,*///(((((((((((/****//(##/,..,
-       ...,,**,....,,,**/((//**...,,..,*/##,...
-        ,.***.,**   ,.,,(#%#*.,**,.,(/(*/#%*.//
-       /../*,,,*/,,,,,,*(###((/*,,,,/(##//(/,*(
-       .,,***/(((((//***/##(((((////(((###///(%
-       , ,**//(((/****,/((#(((((/***/(((((((#%%
-        .******.,*,****/(((((//(((//**,*(#*(#(.
-          ****,,,**,,,,,****//(((/**,,..,/**
-          **/,/*,.,,,,,*,*/*****#//../*./(/
-           ****/*,,#%#&(%%#&&&@@&&.*(/,(*/
-            ,**//**,.*%#%%%&&##*#**((((//
-              .*//**,*,(((*(#(%%(/((#(*
-          .,***,,/***//***/*///((((#((/(#/##
-    .,****.*/* *,,,****///////((((#(*/(((*/##(##%%          -->
     <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+      <a class="active" href="/">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="resume.html">Resume</a>
+
     </div>
     <br>
     <section class="hero">
@@ -66,21 +50,28 @@
         <canvas id="inputDetect" class="invisible">
         </canvas>
       </section>
-      <h1 class="header">Self-Marketing hour!</h1>
       <br>
+
+      <div class="button-center">
+        <a class="center-button" href="https://github.com/knucklesfan">Check out my Github!</a>
+      </div>
+      <br>
+
+      <h1 class="header">Self-Marketing hour!</h1>
       <div class="flexrow">
         <article class="flexcolumn">
           <h1>Low level programmer</h2>
           <p>I've worked with both Microcontrollers and Servers alike.</p>
           <p>I have experience developing backend software that interfaces with databases like MariaDB, SQLlite, Amazon's DynamoDB, and have experience normalizing data and creating databases that last.</p>
-          <p>C++, C, Java, Golang, PHP, Python, Rust, Dart, and even assembly are some of the languages I am performant in, and I have been working with C++ for over 10 years, alongside Java.</p>
+          <p>C++, C, Java, Golang, PHP, Python, Rust, Dart, and even working directly with Assembly are some of the languages I am performant in, and I have been working with C++ for over 10 years, alongside Java.</p>
+          <p>I have hardware experience, having built a few of my own custom PCBs, and custom-built IOT devices for my own personal home usage.</p>
         </article>
         <br>
         <article class="flexcolumn">
           <h1>Front-end works, too!</h2>
-          <p>I've done plenty of Front-end related projects as well. I've made web applications using React, I've made projects with Express.js and Spring alike, and have made several applications using flutter.</p>
-          <p>I also have experience working with Dart, Swift, Kotlin, and whatever the stack is on QT.
-          <small class="small">(I mean, what is the stack on QT? QML??? C++? Python? Does anyone know???)</small></p>
+          <p>I've done plenty of Front-end related projects as well. I've made web applications using React, I've made projects with Express.js and Spring alike, and have made several applications using Flutter.</p>
+          <p>I have experience working in a professional setting with ReactJS, Konva, Svelte, Zustand, and Vite pushing production-ready code multiple times a week.</p>
+          <p>I also have experience working with Dart, Swift, Kotlin, QT and GTK4.
           <p>I've also got a lot of experience developing user experiences with no framework at all! I'm skilled with OpenGL, SDL, or just straight up rendering to a framebuffer. As long as it has pixels, I can render to it.</p>
         </article>
       </div>
@@ -91,6 +82,54 @@
         <canvas id="coverflow-inputDetect" class="coverinvisible">
         </canvas>
       </section>
+        <div class="flexrow">
+          <article class="flexcolumn">
+            <h1>Web Experienced</h1>
+            <p>I've worked on several web related projects, and have worked with ReactJS and Express for over three years.
+              I also am familiar with working with older codebases, including those running JQuery or PHP.
+              I can work with web technologies such as WebGL and WebASM, and enjoy working with direct HTML. No static site generator or React necessary!
+              This entire side was handed-coded, from scratch using no imported or external Javascript or CSS.
+            </p>
+          </article>
+          <br>
+          <article class="flexcolumn">
+            <h1>I can do IT too!</h1>
+            <p>I have plenty of experience running my own servers, and have historically ran infastructure for people on a commission basis.
+              I am familiar with running Linux and Windows servers alike, and have a special interest in running Linux servers. I am familiar with Docker, Kubernetes, Proxmox, and Ceph. I run over 30 services, either for myself or as hosting for friends, and maintain 4 datasites. I have installations, or run several Linux distros (and other unix-y stuff!) including but not limited to Debian, Fedora Server, Arch, Ubuntu Server, Alpine Linux, FreeBSD, OpnSense and of course Proxmox. 
+            </p>
+          </article>
+        </div>
+        <h1 class="header">There's more!</h1>
+          <p class="center-paragraph">I've worked on well over 100 projects, some public some not, and am typically working on something every day, so that number continues to grow. Check out my Github to see everything (that's public!) that I get up to!</p>
+          <div class="center-paragraph">
+            <img src="http://ghchart.rshah.org/knucklesfan" alt="My Github chart" />
+          </div>
+          <br><br>
+           <div class="center-paragraph"><a class="center-button" href="https://github.com/knucklesfan">I'm serious, check out my Github!</a></div>
+        </div>
+        <br><br>
+
+        <div class="center-paragraph">
+          <article>
+          <h2>Thanks for stopping by!</h2>
+          <div class="flexrow">
+            <div class="flexcolumn">
+              <img class="profile" src="https://avatars.githubusercontent.com/u/17733165"></img>
+            </div>
+            <div class="flexcolumn">
+              <div class="center-column">
+                <div>
+                <p>Don't forget to check out my resume if you care about that sort of thing.</p>
+                <div class="center-paragraph"><a class="center-button" href="resume.html">Resume</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </article>
+        </div>
+
+
+        <div class="footer">Cade Parker - 2026</div>
         <!-- The Modal -->
       <div id="projectModal" class="modal">
 
@@ -109,7 +148,7 @@
               </div>
               <div class="flexcolumn">
               <h1 id="modaltitle">test</h1>
-              <a id="modallink" href="https://google.com">
+              <a id="modallink" href="https://cadeparker.me">
                 <article class="linkbox">
                  <strong>CHECK IT OUT</strong>
                 </article>
@@ -124,13 +163,11 @@
                 </div>
 
               </div>
-              <p id="modaldesc">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iru re dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+              <p id="modaldesc">How did you see this?</p>
             </div>
 
             </div>
 
           </div>
-
-      </div>
     </body>
 </html>
