@@ -466,3 +466,6 @@ a:hover, a:visited, a:link, a:active
 	width: 128px;
 	height: 128px;
 }
+.hidden {
+	display: none;
+}
