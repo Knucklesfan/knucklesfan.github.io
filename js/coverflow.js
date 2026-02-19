@@ -105,7 +105,14 @@ function coverflow_main() {
             document.getElementById("modaldesc").innerHTML = coverflow_images[selection][2]["desc"]
             document.getElementById("modallanguage").innerHTML = coverflow_images[selection][2]["lang"]
             document.getElementById("modalyear").innerHTML = coverflow_images[selection][2]["year"]
-            document.getElementById("modallink").href = coverflow_images[selection][2]["link"]
+            if(coverflow_images[selection][2]["link"] !== "") {
+                document.getElementById("modallink").href = coverflow_images[selection][2]["link"]
+                document.getElementById("modallink").className = "";
+
+            }
+            else {
+                document.getElementById("modallink").className = "hidden";
+            }
             slideshowholder.innerHTML = ""
             for(let i = 0; i < coverflow_images[selection][2]["images"].length; i++) {
                 coverflow_images[selection][2]["images"][i]
